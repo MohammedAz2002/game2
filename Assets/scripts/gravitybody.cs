@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class gravitybody : MonoBehaviour
 {
-    public gravity attractor;
+    //public gravity attractor;
+
     // Start is called before the first frame update
     private Transform myTransform;
 
@@ -18,6 +19,9 @@ public class gravitybody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gravity attractor = GameObject.Find("Sphere").GetComponent<gravity>();
         attractor.Attract(myTransform);
     }
 }
+
+ 

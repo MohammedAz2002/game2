@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 
 public class GunData : MonoBehaviour //ScriptableObject
 {
-    public GameObject bulletPrefab;
+    //public GameObject bulletPrefab;
     public Transform firePoint;
-    public float bulletForce = 100f;
+    public float bulletForce = 160f;
 
     public float timeBetweenShots = 0.1f;
 
     private float timeSinceLastShot = 0f;
+    PhotonView view;
+    private void Start()
+    {
+        view = GetComponent<PhotonView>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -27,16 +32,20 @@ public class GunData : MonoBehaviour //ScriptableObject
 
     void Shoot()
     {
-        // Instantiate a new bullet at the fire point position and rotation
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        if (view.IsMine)
+        {
+            GameObject bulletPrefab = GameObject.Find("bullet");
+            // Instantiate a new bullet at the fire point position and rotation
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        // Get the Rigidbody component of the bullet
-        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+            // Get the Rigidbody component of the bullet
+            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
 
-        // Add force to the bullet in the forward direction of the fire point
-        bulletRigidbody.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
-    
-        Destroy(bullet, 1f);
+            // Add force to the bullet in the forward direction of the fire point
+            bulletRigidbody.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+
+            Destroy(bullet, 1f);
+        }
     }
 
     //[Header("Info")]
