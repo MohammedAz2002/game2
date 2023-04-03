@@ -27,27 +27,27 @@ public class CarHealth : MonoBehaviour
     [PunRPC]
     void DestroyCar()
     {
-        PhotonView pv = GetComponent<PhotonView>();
-        DestroyCar(pv.gameObject);
-        Destroy(gameObject);
-        //if (GetComponent<PhotonView>().IsMine)
-        //{
-        //    Renderer renderer = GetComponent<Renderer>();
-        //    if (renderer != null)
-        //    {
-        //        Destroy(renderer.gameObject);
-        //        //renderer.enabled = false;
+        //PhotonView pv = GetComponent<PhotonView>();
+        //DestroyCar(pv.gameObject);
+        //Destroy(gameObject);
+        if (GetComponent<PhotonView>().IsMine)
+        {
+            Renderer renderer = GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                Destroy(renderer.gameObject);
+                renderer.enabled = false;
 
-        //    }
+            }
 
-        //    Collider collider = GetComponent<Collider>();
-        //    if (collider != null)
-        //    {
-        //        collider.enabled = false;
-        //    }
-        //}
+            Collider collider = GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+        }
 
-       
+
     }
 }
 
