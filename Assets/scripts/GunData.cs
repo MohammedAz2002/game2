@@ -44,7 +44,7 @@ public class GunData : MonoBehaviour //ScriptableObject
             // Add force to the bullet in the forward direction of the fire point
             bulletRigidbody.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
 
-            Destroy(bullet, 0.8f);
+            Destroy(bullet, 1f);
         }
     }
 

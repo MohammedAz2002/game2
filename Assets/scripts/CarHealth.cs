@@ -28,28 +28,23 @@ public class CarHealth : MonoBehaviour
     void DestroyCar()
     {
         //PhotonView pv = GetComponent<PhotonView>();
-        //Destroy(pv.gameObject);
+        //DestroyCar(pv.gameObject);
         //Destroy(gameObject);
         if (GetComponent<PhotonView>().IsMine)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("lobbyScene");
+            Renderer renderer = GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                Destroy(renderer.gameObject);
+                renderer.enabled = false;
 
-            PhotonNetwork.Destroy(gameObject);
-            PhotonView pv = GetComponent<PhotonView>();
-            Destroy(pv.gameObject);
-            //Renderer renderer = GetComponent<Renderer>();
-            //if (renderer != null)
-            //{
-            //    Destroy(renderer.gameObject);
-            //    renderer.enabled = false;
+            }
 
-            //}
-
-            //Collider collider = GetComponent<Collider>();
-            //if (collider != null)
-            //{
-            //    collider.enabled = false;
-            //}
+            Collider collider = GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
         }
 
 

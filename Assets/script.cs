@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickToSphere : MonoBehaviour
+public class script : MonoBehaviour
 {
-    public Transform sphereTransform;
-    public float sphereRadius;
-
-    private void LateUpdate()
+    // Start is called before the first frame update
+    void Start()
     {
-        Vector3 direction = transform.position - sphereTransform.position;
-        float distance = direction.magnitude;
-        if (distance > sphereRadius)
-        {
-            transform.position = sphereTransform.position + direction.normalized * sphereRadius;
-        }
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
