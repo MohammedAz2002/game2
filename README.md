@@ -3,10 +3,17 @@
 <h1>weekly work</h1>
 
 <h3>week 1:</h3>
+<<<<<<< HEAD
 choosing the game and write apitch. 16 hours (8 per student)
 
 <h3> week 2:</h3>
 start learning about unity and c#. 16 hours (8 per student)
+=======
+choosing the game and write apitch. 8 hours
+
+<h3> week 2:</h3>
+start learning about unity and c#. 10 hours
+>>>>>>> parent of 5cbab6e (..)
 
 <h3>week 3:</h3>
 building a sphere world that have gravity and download car to use. 8 hours
