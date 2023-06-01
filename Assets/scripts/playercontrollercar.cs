@@ -40,7 +40,10 @@ public class playercontrollercar : MonoBehaviour
             {
                 // Calculate the turn angle based on the move direction and turn radius
                 float turnAngle = Mathf.Atan2(turnRadius, Mathf.Abs(moveInput)) * Mathf.Rad2Deg;
-
+                if (transform.position.y < 0f)
+                {
+                    turnInput *= -1f;
+                }
                 // Apply the turn angle to the car's rotation
                 transform.Rotate(Vector3.up, turnInput * turnAngle * Time.deltaTime, Space.World);
 
@@ -50,6 +53,31 @@ public class playercontrollercar : MonoBehaviour
         }
 
     }
+    //private void Update()
+    //{
+    //    if (view.IsMine)
+    //    {
+    //        float turnInput = Input.GetAxis("Horizontal");
+    //        float moveInput = Input.GetAxis("Vertical");
+
+    //        if (moveInput != 0)
+    //        {
+    //            float moveDirection = Mathf.Sign(moveInput);
+    //            float turnAngle = moveDirection * Mathf.Atan2(turnRadius, Mathf.Abs(moveInput)) * Mathf.Rad2Deg;
+
+    //            transform.Rotate(Vector3.up, turnInput * turnAngle * Time.deltaTime, Space.World);
+
+    //            // Flip the moveInput if the car is on the other side of the sphere
+    //            if (transform.position.y < 0f)
+    //            {
+    //                moveInput *= -1f;
+    //            }
+
+    //            transform.Translate(Vector3.forward * moveInput * moveSpeed * Time.deltaTime);
+    //        }
+    //    }
+    //}
+
 }
 
 
