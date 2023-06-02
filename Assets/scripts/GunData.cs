@@ -3,67 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class GunData : MonoBehaviour //ScriptableObject
+public class GunData : MonoBehaviourPunCallbacks
 {
-    //public GameObject bulletPrefab;
     public Transform firePoint;
     public float bulletForce = 160f;
     public GameObject fire;
     public float timeBetweenShots = 0.1f;
 
     private float timeSinceLastShot = 0f;
-    PhotonView view;
     private GameObject fireExplosion;
 
-    private void Start()
+    private void Update()
     {
-        view = GetComponent<PhotonView>();
-    }
+        if (!photonView.IsMine)
+            return;
 
-    // Update is called once per frame
-    void Update()
-    {
         timeSinceLastShot += Time.deltaTime;
 
         if (Input.GetKey(KeyCode.Space) && timeSinceLastShot >= timeBetweenShots)
         {
-            Shoot();
+            photonView.RPC("Shoot", RpcTarget.All);
             timeSinceLastShot = 0f;
         }
     }
 
+    [PunRPC]
     void Shoot()
     {
-        if (view.IsMine)
-        {
-            fireExplosion= Instantiate(fire, firePoint.position, firePoint.rotation);
-            GameObject bulletPrefab = GameObject.Find("bullet");
-            // Instantiate a new bullet at the fire point position and rotation
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        fireExplosion = Instantiate(fire, firePoint.position, Quaternion.identity);
 
-            // Get the Rigidbody component of the bullet
-            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+        // Instantiate a new bullet prefab locally on the shooting player's client
+        GameObject bulletPrefab = Instantiate(Resources.Load("bullet") as GameObject, firePoint.position, firePoint.rotation);
 
-            // Add force to the bullet in the forward direction of the fire point
-            bulletRigidbody.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+        // Get the Rigidbody component of the bullet
+        Rigidbody bulletRigidbody = bulletPrefab.GetComponent<Rigidbody>();
 
-            Destroy(bullet, 0.8f);
-            Destroy(fireExplosion, 0.6f);
-        }
+        // Add force to the bullet in the forward direction of the fire point
+        bulletRigidbody.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+
+        Destroy(bulletPrefab, 0.8f);
+        Destroy(fireExplosion, 0.6f);
     }
-
-    //[Header("Info")]
-    //public new string name;
-
-    //[Header("shooting")]
-    //public float damage;
-    //public float maxDistance;
-
-    //[Header("Reloading")]
-    //public int currentAmmo;
-    //public int magSize;
-    //public float fireRate;
-    //public float reloadTime;
-    //public bool reloading;
-
 }
+

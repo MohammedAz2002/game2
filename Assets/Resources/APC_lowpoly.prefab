@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 2660883883947224647}
-  bulletForce: 200
-  fire: {fileID: 1000011190285628, guid: beb3acff7ab73944fb8f470f24d74ed3, type: 3}
+  bulletForce: 250
+  fire: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   timeBetweenShots: 0.2
 --- !u!114 &6336367466453244774
 MonoBehaviour:
@@ -1168,9 +1168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a97abad18035b84f94971dc02648cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  turnRadius: 30
-  turnSpeed: 20
+  moveSpeed: 3
+  turnRadius: 40
+  turnSpeed: 15
   frontLeftWheel: {fileID: 6573686856446642741}
   frontRightWheel: {fileID: 2770375309029813490}
   cameraTransform: {fileID: 8924782798871989165}
