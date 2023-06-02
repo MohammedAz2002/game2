@@ -8,11 +8,13 @@ public class GunData : MonoBehaviour //ScriptableObject
     //public GameObject bulletPrefab;
     public Transform firePoint;
     public float bulletForce = 160f;
-
+    public GameObject fire;
     public float timeBetweenShots = 0.1f;
 
     private float timeSinceLastShot = 0f;
     PhotonView view;
+    private GameObject fireExplosion;
+
     private void Start()
     {
         view = GetComponent<PhotonView>();
@@ -34,6 +36,7 @@ public class GunData : MonoBehaviour //ScriptableObject
     {
         if (view.IsMine)
         {
+            fireExplosion= Instantiate(fire, firePoint.position, firePoint.rotation);
             GameObject bulletPrefab = GameObject.Find("bullet");
             // Instantiate a new bullet at the fire point position and rotation
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -45,6 +48,7 @@ public class GunData : MonoBehaviour //ScriptableObject
             bulletRigidbody.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
 
             Destroy(bullet, 0.8f);
+            Destroy(fireExplosion, 0.6f);
         }
     }
 
