@@ -33,7 +33,7 @@ public class GunData : MonoBehaviourPunCallbacks
         fireExplosion = Instantiate(fire, firePoint.position, Quaternion.identity);
 
         // Instantiate a new bullet prefab locally on the shooting player's client
-        GameObject bulletPrefab = Instantiate(Resources.Load("bullet") as GameObject, firePoint.position, firePoint.rotation);
+        GameObject bulletPrefab = Instantiate(Resources.Load("bullet_sec") as GameObject, firePoint.position, firePoint.rotation);
 
         // Get the Rigidbody component of the bullet
         Rigidbody bulletRigidbody = bulletPrefab.GetComponent<Rigidbody>();

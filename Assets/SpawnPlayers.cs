@@ -16,7 +16,7 @@ public class SpawnPlayers : MonoBehaviour
     private void SpawnPlayer()
     {
         // Generate a random point within the spherical world
-        Vector3 randomPoint = Random.onUnitSphere * sphereObject.transform.localScale.x / 2.0656f;
+        Vector3 randomPoint = Random.onUnitSphere * sphereObject.transform.localScale.x / 5f;
         Vector3 randomPosition = sphereObject.transform.position + randomPoint;
 
         // Spawn the player at the random position
