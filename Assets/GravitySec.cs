@@ -22,22 +22,22 @@ public class GravitySec : MonoBehaviour
         float carXPosition = transform.position.z;
         gravity attractor;
         //attractor = GameObject.Find("Sphere").GetComponent<gravity>();
-        if (carXPosition <= -6.45 && carXPosition >= -7)
+        if (carXPosition <= -6.45 && carXPosition >= -7.5)
         {
             // attract sphere1
             attractor = GameObject.Find("Sphere3").GetComponent<gravity>();
         }
-        else if (carXPosition <= -7 && carXPosition >= -8)
-        {
-            // attract sphere1
-            attractor = GameObject.Find("Sphere20").GetComponent<gravity>();
-        }
-        //else if (carXPosition <= -8 && carXPosition >= -8.7)
+        //else if (carXPosition <= -7 && carXPosition >= -8)
         //{
         //    // attract sphere1
-        //    attractor = GameObject.Find("Sphere21").GetComponent<gravity>();
+        //    attractor = GameObject.Find("Sphere20").GetComponent<gravity>();
         //}
-        else if (carXPosition <= -8 && carXPosition >= -9)
+        else if (carXPosition <= -7.5 && carXPosition >= -8.5)
+        {
+            // attract sphere1
+            attractor = GameObject.Find("Sphere21").GetComponent<gravity>();
+        }
+        else if (carXPosition <= -8.5 && carXPosition >= -9)
         {
             // attract sphere1
             attractor = GameObject.Find("Sphere22").GetComponent<gravity>();
