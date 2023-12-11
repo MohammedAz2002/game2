@@ -11,21 +11,14 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        Invoke("InstantiateExplosion", 0.2f);
-
-
-    }
-    private void InstantiateExplosion()
-    {
         explosion = Instantiate(explosion1, transform.position, Quaternion.identity);
 
-        // Destroy the gameObject after 1 second
-        if (gameObject != null)
-        {
-            Destroy(gameObject, 1f);
-        }
+
 
         // Destroy the explosion after 1 second
         Destroy(explosion, 1f);
+
+
     }
+    
 }

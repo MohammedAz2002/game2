@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 2660883883947224647}
-  bulletForce: 350
+  bulletForce: 250
   fire: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   timeBetweenShots: 0.2
 --- !u!114 &6336367466453244774

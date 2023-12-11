@@ -30,7 +30,10 @@ make the game multiplayer, upload the game to server, and the players cars manag
 <h3>week 7:</h3>
 we solve problems we faced in multiplayer, like to make it more smooth, and synchronize every thing. 16 hours
 
+<h3>week 8:</h3>
+add shrinking planet, object that falls from sky make the game more excited, add animation, 4 hours
 
-
+<h3>week ??:</h3>
+make a new planet and when you start you start randomly in one of the planets, adjust gravity, and make every thing to the first world for the second, 15 hours 
 
 
